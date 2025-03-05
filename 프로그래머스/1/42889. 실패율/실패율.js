@@ -2,21 +2,21 @@ function solution(N, stages) {
     const failureRateMap = new Map()
     
     for (let i = 1; i <= N; i++) {
-        const reached = []
-        const failed = []
+        let reached = 0
+        let failed = 0
         
         stages.forEach(stage => {
             if (stage >= i) {
-                reached.push(stage)
+                reached++
             } 
             if (stage === i) {
-                failed.push(stage)
+                failed++
             }
         })
         
-        const failureRate = reached.length === 0 ? 0 : failed.length / reached.length
+        const failureRate = reached === 0 ? 0 : failed / reached
         failureRateMap.set(i, failureRate)
     }
-    const sortedMap = new Map([...failureRateMap].sort((a, b) => b[1] - a[1]))
-    return Array.from(sortedMap.keys())
+
+    return [...failureRateMap].sort((a, b) => b[1] - a[1]).map(item => item[0])
 }
