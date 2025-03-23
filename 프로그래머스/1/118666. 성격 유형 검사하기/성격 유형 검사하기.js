@@ -5,13 +5,13 @@ function solution(survey, choices) {
     for (let i = 0; i < survey.length; i++) {
         const [negative, positive] = survey[i].split('')
         
-        if ([5,6,7].includes(choices[i])) {
+        if (choices[i] > 4) {
             const score = scores.get(positive) || 0
             
             scores.set(positive, score + (choices[i] - 4))
             scores.set(negative, scores.get(negative) || 0)
         }
-        else if ([1,2,3].includes(choices[i])) {
+        else if (choices[i] < 4) {
             const score = scores.get(negative) || 0
             
             scores.set(negative, score + (4 - choices[i]))
