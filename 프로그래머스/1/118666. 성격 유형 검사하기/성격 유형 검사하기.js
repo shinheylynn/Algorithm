@@ -28,7 +28,7 @@ function solution(survey, choices) {
        } else if (scores.get(first) > scores.get(second)) {
            return first
        } else {
-           return first < second ? first : second
+           return first
        }
     }).join('')
 }
