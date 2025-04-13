@@ -1,25 +1,25 @@
 function solution(s) {
-    let arr = [...s]
     let answer = 0
-
-    while (arr.length > 0) {
-        const x = arr[0]
-        let same = 0
+    
+    let i = 0
+    while (i < s.length) {
+        let x = s[i]
+        let same = 1
         let diff = 0
-
-        let i = 0
-        while (i < arr.length) {
-            if (arr[i] === x) same++
+        
+        let j = i + 1
+        while (j < s.length) {
+            if (x === s[j]) same++
             else diff++
-
+            
             if (same === diff) break
-
-            i++
+            
+            j++
         }
 
-        arr.splice(0, i + 1)
         answer++
+        i = j + 1
     }
-
+    
     return answer
 }
