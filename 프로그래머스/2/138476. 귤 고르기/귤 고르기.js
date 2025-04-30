@@ -9,15 +9,15 @@ function solution(k, tangerine) {
     const sortedSize = Array.from(map.values()).sort((a, b) => b - a)
     
     for (let i = 0; i < sortedSize.length; i++) {
-        if (sortedSize[i] >= k && i === 0) {
-            answer = 1
-            break
-        } 
+        // if (sortedSize[i] >= k && i === 0) {
+        //     answer = 1
+        //     break
+        // } 
         
         if (k > 0) {
             k = k - sortedSize[i]
             answer++
-        } 
+        } else break
     }
     
     return answer
