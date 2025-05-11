@@ -15,13 +15,12 @@ function solution(fees, records) {
     .map(e => e.split(' '))
     .sort((a, b) => a[1].localeCompare(b[1]))
     
+    if (records.length === 1) {
+        return [getTotalFee(getTimeDiff(arr[0][0], '23:59'), fees)]
+    }
+    
     const map = new Map()
     const answer = []
-    
-    if (records.length === 1) {
-        answer.push(getTotalFee(getTimeDiff(arr[0][0], '23:59'), fees))
-        return answer
-    }
     
     arr.forEach(e => {
       const [time, car, action] = e
