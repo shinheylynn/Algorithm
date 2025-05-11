@@ -15,13 +15,13 @@ function solution(fees, records) {
         const [time, car] = records[0].split(' ')
         const totalTime = getTimeDiff(time, '23:59')
         return [getTotalFee(totalTime, fees)]
-      }
+    }
     
     const obj = {}
     const answer = []
     
     for (const r of records) {
-        const [time, car] = r.split(' ')
+        const [time, car, action] = r.split(' ')
         
         if(!obj[car]) obj[car] = []
         obj[car].push(time)
