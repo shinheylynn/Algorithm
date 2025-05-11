@@ -30,20 +30,20 @@ function solution(fees, records) {
       map.get(car).push(time)
     })
     
-    Array.from(map).map(([key, value]) => {
-      let totalDiff = value.reduce((acc, cur, i) => {
-        if (i % 2 === 0 && value[i + 1]) {
-          return acc + getTimeDiff(value[i], value[i + 1])
+    for (const [car, times] of map) {
+        let totalDiff = times.reduce((acc, cur, i) => {
+            if (i % 2 === 0 && times[i + 1]) {
+                return acc + getTimeDiff(times[i], times[i + 1])
+            }
+            return acc
+        }, 0)
+        
+        if (times.length % 2 === 1) {
+            totalDiff += getTimeDiff(times[times.length - 1], '23:59')
         }
-        return acc
-      }, 0)
-
-      if (value.length % 2 === 1) {
-        totalDiff += getTimeDiff(value[value.length - 1], '23:59')
-      }
-      
-      answer.push(getTotalFee(totalDiff, fees))
-    })
+        
+        answer.push(getTotalFee(totalDiff, fees))
+    }
     
     return answer
 }
