@@ -11,11 +11,12 @@ function getTotalFee(time, [baseTime, baseFee, unitTime, unitFee]) {
 }
 
 function solution(fees, records) {
-    const map = new Map()
-    const answer = []
     const arr = records
     .map(e => e.split(' '))
     .sort((a, b) => a[1].localeCompare(b[1]))
+    
+    const map = new Map()
+    const answer = []
     
     if (records.length === 1) {
         answer.push(getTotalFee(getTimeDiff(arr[0][0], '23:59'), fees))
