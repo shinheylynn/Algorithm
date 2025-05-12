@@ -11,12 +11,6 @@ function getTotalFee(time, [baseTime, baseFee, unitTime, unitFee]) {
 }
 
 function solution(fees, records) {
-    if (records.length === 1) {
-        const [time, car] = records[0].split(' ')
-        const totalTime = getTimeDiff(time, '23:59')
-        return [getTotalFee(totalTime, fees)]
-    }
-    
     const obj = {}
     const answer = []
     
