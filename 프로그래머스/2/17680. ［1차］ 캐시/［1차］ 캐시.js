@@ -1,23 +1,24 @@
 function solution(cacheSize, cities) {
-    let arr = []
-    let hit = 0
-    const upperCaseCities = cities.map(i => i.toUpperCase())
+    if (cacheSize === 0) {
+        return 5 * cities.length
+    }
     
-    for (let i = 0; i < upperCaseCities.length; i++) {
-        if (cacheSize === 0) {
-            return 5 * upperCaseCities.length
-        }
+    let cache = []
+    let hit = 0
+    
+    for (let i = 0; i < cities.length; i++) {
+        const upperCity = cities[i].toUpperCase()
         
-        if (arr.includes(upperCaseCities[i])) {
-            const index = arr.indexOf(upperCaseCities[i])
-            arr.splice(index, 1)
+        if (cache.includes(upperCity)) {
+            const index = cache.indexOf(upperCity)
+            cache.splice(index, 1)
             hit++
         }
         
-        arr.unshift(upperCaseCities[i])
+        cache.unshift(upperCity)
         
-        if (arr.length > cacheSize) {
-            arr.pop()
+        if (cache.length > cacheSize) {
+            cache.pop()
         }
     }
     
