@@ -7,7 +7,7 @@ function solution(s) {
 
     arr.map(item => {
         const num = item.filter(v => !answer.includes(v))
-        answer.push(num[0])
+        answer.push(Number(num))
     })
     
     return answer
