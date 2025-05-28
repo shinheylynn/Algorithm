@@ -1,9 +1,5 @@
 function solution(s) {
-    let answer = []
-    const arr = s.split(' ').map(i => Number(i))
+    const arr = s.split(' ')
     
-    answer.push(Math.min(...arr))
-    answer.push(Math.max(...arr))
-    
-    return String(answer).replace(',', ' ')
+    return Math.min(...arr) + ' ' + Math.max(...arr)
 }
