@@ -1,6 +1,6 @@
 # [level 2] 튜플 - 64065 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/64065?language=javascript) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/64065) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 05월 29일 01:00:26
+2025년 05월 29일 16:11:47
 
 ### 문제 설명
 
