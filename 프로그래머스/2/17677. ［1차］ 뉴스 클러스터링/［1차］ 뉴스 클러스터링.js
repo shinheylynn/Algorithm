@@ -45,25 +45,22 @@ const makeIntersection = (arr1, arr2) => {
 }
 
 const makeUnion = (arr1, arr2) => {
-    const map = new Map()
+    const count1 = new Map()
+    const count2 = new Map()
     const result = []
     
     for (const char of arr1) {
-        const current = map.get(char) || 0
-        const filtered = arr1.filter(x => x === char).length
-        
-        map.set(char, Math.max(current, filtered))
+        count1.set(char, (count1.get(char) || 0) + 1)
     }
     
     for (const char of arr2) {
-        const current = map.get(char) || 0
-        const filtered = arr2.filter(x => x === char).length
-        
-        map.set(char, Math.max(current, filtered))
+        count2.set(char, (count2.get(char) || 0) + 1)
     }
     
-    for (const [char, count] of map) {
-        result.push(...Array(count).fill(char))
+    const union = new Set([...count1.keys(), ...count2.keys()])
+    for (const key of union) {
+        const maxCount = Math.max(count1.get(key) || 0, count2.get(key) || 0)
+        result.push(...Array(maxCount).fill(key))
     }
     
     return result.length
