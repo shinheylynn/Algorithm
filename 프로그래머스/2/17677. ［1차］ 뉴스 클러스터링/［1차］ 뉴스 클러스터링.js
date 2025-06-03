@@ -1,67 +1,51 @@
-const solution = (str1, str2) => {
-    let jaccard
-    const arr1 = makeSet(str1.toLowerCase())
-    const arr2 = makeSet(str2.toLowerCase())
-    
-    const intersection = makeIntersection(arr1, arr2)
-    const union = makeUnion(arr1, arr2)
-    
-    if (intersection === 0 && union === 0) {
-        jaccard = 1
-    } else jaccard = intersection / union
-    
-    return Math.floor(jaccard * 65536)
+const checkValidAndGetPlus = ([char1, char2]) => {
+    if (char2 < 'a' || char2 > 'z') return 2
+    if (char1 < 'a' || char1 > 'z') return 1
+    return 0
 }
 
-const makeSet = (str) => {
-    const arr = []
+function solution(str1, str2) {
+    const formatStr1 = str1.toLowerCase()
+    const intersectionCheckMap = {}
+    let union = 0
+    let i = 0
     
-    Array.from(str).forEach((x, idx) => {
-        if (idx < str.length - 1) {
-            arr.push(x + str[idx + 1])
+    while (i < str1.length - 1) {
+        const str = formatStr1[i] + formatStr1[i + 1]
+        const plus = checkValidAndGetPlus(str)
+        if (plus > 0) {
+            i += plus
+            continue
         }
-    })
-    
-    return arr.filter(x => /^[a-z|A-Z]+$/.test(x))
-}
-
-const makeIntersection = (arr1, arr2) => {
-    const map = new Map()
-    const result = []
-    
-    for (const char of arr1) {
-        map.set(char, (map.get(char) || 0) + 1)
+        
+        intersectionCheckMap[str] = (intersectionCheckMap[str] || 0) + 1
+        union++
+        i++
     }
     
-    for (const char of arr2) {
-        const count = map.get(char) || 0
+    const formatStr2 = str2.toLowerCase()
+    let intersection = 0
+    i = 0
+    
+    while (i < str2.length - 1) {
+        const str = formatStr2[i] + formatStr2[i + 1]
+        const plus = checkValidAndGetPlus(str)
+        if (plus > 0) {
+            i += plus
+            continue
+        }
+        
+        const count = intersectionCheckMap[str]
         if (count > 0) {
-            result.push(char)
-            map.set(char, map.get(char) - 1)
+            intersection++
+            intersectionCheckMap[str] = count - 1
+        } else {
+            union++
         }
+        
+        i++
     }
-    
-    return result.length
-}
 
-const makeUnion = (arr1, arr2) => {
-    const result = []
-    const count1 = new Map()
-    const count2 = new Map()
-    
-    for (const char of arr1) {
-        count1.set(char, (count1.get(char) || 0) + 1)
-    }
-    
-    for (const char of arr2) {
-        count2.set(char, (count2.get(char) || 0) + 1)
-    }
-    
-    const unionKeys = new Set([...count1.keys(), ...count2.keys()])
-    for (const char of unionKeys) {
-        const maxCount = Math.max(count1.get(char) || 0, count2.get(char) || 0)
-        result.push(...Array(maxCount).fill(char))
-    }
-    
-    return result.length
+    if (!union) return 65536
+    return Math.floor(65536 * intersection / union)
 }
