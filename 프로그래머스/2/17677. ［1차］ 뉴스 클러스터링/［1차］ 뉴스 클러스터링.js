@@ -13,16 +13,16 @@ const solution = (str1, str2) => {
     return Math.floor(jaccard * 65536)
 }
 
-const makeSet = (string) => {
+const makeSet = (str) => {
     const arr = []
     
-    Array.from(string).forEach((char, i) => {
-        if (i < string.length - 1) {
-            arr.push(char + string[i + 1])
+    Array.from(str).forEach((x, idx) => {
+        if (idx < str.length - 1) {
+            arr.push(x + str[idx + 1])
         }
     })
     
-    return arr.filter(el => /^[a-zA-Z]+$/.test(el))
+    return arr.filter(x => /^[a-z|A-Z]+$/.test(x))
 }
 
 const makeIntersection = (arr1, arr2) => {
@@ -34,10 +34,10 @@ const makeIntersection = (arr1, arr2) => {
     }
     
     for (const char of arr2) {
-        const count = map.get(char)
+        const count = map.get(char) || 0
         if (count > 0) {
             result.push(char)
-            map.set(char, count - 1)
+            map.set(char, map.get(char) - 1)
         }
     }
     
@@ -45,9 +45,9 @@ const makeIntersection = (arr1, arr2) => {
 }
 
 const makeUnion = (arr1, arr2) => {
+    const result = []
     const count1 = new Map()
     const count2 = new Map()
-    const result = []
     
     for (const char of arr1) {
         count1.set(char, (count1.get(char) || 0) + 1)
@@ -57,10 +57,10 @@ const makeUnion = (arr1, arr2) => {
         count2.set(char, (count2.get(char) || 0) + 1)
     }
     
-    const union = new Set([...count1.keys(), ...count2.keys()])
-    for (const key of union) {
-        const maxCount = Math.max(count1.get(key) || 0, count2.get(key) || 0)
-        result.push(...Array(maxCount).fill(key))
+    const unionKeys = new Set([...count1.keys(), ...count2.keys()])
+    for (const char of unionKeys) {
+        const maxCount = Math.max(count1.get(char) || 0, count2.get(char) || 0)
+        result.push(...Array(maxCount).fill(char))
     }
     
     return result.length
