@@ -5,7 +5,7 @@ function solution(record) {
     record.forEach(x => {
         const [action, id, nickname] = x.split(' ')
         
-        if (action === 'Enter' || action === 'Change') {
+        if (action !== 'Leave') {
             userObj[id] = nickname
         } 
     })
