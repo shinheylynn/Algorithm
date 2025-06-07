@@ -1,24 +1,24 @@
 function solution(record) {
     const result = []
     const userObj = {}
+    const output = {
+        'Enter' : '님이 들어왔습니다.',
+        'Leave' : '님이 나갔습니다.'
+    }
     
     record.forEach(x => {
         const [action, id, nickname] = x.split(' ')
         
-        if (action !== 'Leave') {
-            userObj[id] = nickname
+        if (action !== 'Change') {
+            result.push([action, id])
         } 
-    })
-    
-    record.forEach(x => {
-        const [action, id, nickname] = x.split(' ')
         
-        if (action === 'Enter') {
-            result.push(userObj[id] + '님이 들어왔습니다.')
-        } else if (action === 'Leave') {
-            result.push(userObj[id] + '님이 나갔습니다.')
+        if (nickname) {
+            userObj[id] = nickname
         }
     })
     
-    return result
+    return result.map(([action, userId]) => {
+        return `${userObj[userId]}${output[action]}`
+    })
 }
