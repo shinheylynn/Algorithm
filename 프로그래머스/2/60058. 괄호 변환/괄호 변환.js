@@ -2,20 +2,19 @@ function solution(p) {
     if (p === '') return ''
     
     const [u, v] = getBalanced(p)
-    let str = ''
 
-    if (u.length === 0 || u[0] === ')' || u[u.length - 1] === '(') {
-        str = '(' + solution(v) + ')'
-
-        for (let i = 1; i < u.length - 1; i++) {
-            if (u[i] === '(') str += ')'
-            if (u[i] === ')') str += '('
-        }
-
-        return str 
+    if (u[0] === '(') {
+        return u + solution(v)
     }
 
-    return u + solution(v)
+    let str = '(' + solution(v) + ')'
+
+    for (let i = 1; i < u.length - 1; i++) {
+        if (u[i] === '(') str += ')'
+        if (u[i] === ')') str += '('
+    }
+
+    return str 
 }
 
 const getBalanced = (str) => {
