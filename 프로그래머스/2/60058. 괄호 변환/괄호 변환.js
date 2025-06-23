@@ -5,12 +5,9 @@ function solution(p) {
     let str = ''
 
     if (u.length === 0 || u[0] === ')' || u[u.length - 1] === '(') {
-        str = '(' + solution(v.join('')) + ')'
+        str = '(' + solution(v) + ')'
 
-        u.pop()  
-        u.shift()  
-
-        for (let i = 0; i < u.length; i++) {
+        for (let i = 1; i < u.length - 1; i++) {
             if (u[i] === '(') str += ')'
             if (u[i] === ')') str += '('
         }
@@ -18,23 +15,22 @@ function solution(p) {
         return str 
     }
 
-    return u.join('') + solution(v.join(''))
+    return u + solution(v)
 }
 
-const getBalanced = (arr) => {
-    arr = Array.isArray(arr) ? arr : [...arr]
-    let u = []
-    let v = []
+const getBalanced = (str) => {
+    let u = ''
+    let v = ''
     let left = 0
     let right = 0
     
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] === '(') left++
-        if (arr[i] === ')') right++
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === '(') left++
+        if (str[i] === ')') right++
         
         if  (left === right) {
-            v = arr.splice(left + right)
-            u = arr
+            u = str.slice(0, left + right)
+            v = str.slice(left + right)
             break
         }
     }
