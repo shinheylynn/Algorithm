@@ -1,13 +1,18 @@
 function solution(n, t, m, p) {
     let answer = ''
-    const arrN = Array(t * m).fill(0).map((_, i) => i.toString(n).toUpperCase())
-    const nums = arrN.map(n => n.split('')).flat()
+    let num = 0
+    let sequence = ''
 
-    nums.forEach((n, idx) => {
-        if (idx % m === (p - 1)) {
-            answer += n
+    while (sequence.length < t * m) {
+        sequence += num.toString(n).toUpperCase()
+        num++
+    }
+
+    for (let i = 0; answer.length < t; i++) {
+        if (i % m === (p - 1)) {
+            answer += sequence[i]
         }
-    })
-    
-    return answer.slice(0, t)
+    }
+
+    return answer
 }
