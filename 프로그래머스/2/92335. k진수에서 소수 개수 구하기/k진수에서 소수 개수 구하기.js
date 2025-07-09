@@ -3,7 +3,6 @@ const solution = (n, k) => {
     const nums = n.toString(k).split('0')
     
     for (let num of nums) {
-        if (num === '') continue
         if (isPrime(Number(num))) {
             answer++
         }
