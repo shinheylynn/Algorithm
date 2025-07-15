@@ -6,14 +6,15 @@ function solution(msg) {
     let c = ''
 
     while (sliceIndex < msg.length) {
-        let arr = msg.slice(sliceIndex).split('')
-        let w = arr.join('')
+        let j = msg.length
 
         // w가 사전에 없다면, 마지막 글자 하나씩 제거하며 찾는다
-        while (!dic.get(w)) {
-            c = arr.pop()
-            w = arr.join('')
+        while (!dic.get(msg.slice(sliceIndex, j))) {
+            j--
         }
+        
+        const w = msg.slice(sliceIndex, j)
+        const c = msg[j] || ''
 
         answer.push(dic.get(w))
         dic.set(w + c, dic.size + 1)
