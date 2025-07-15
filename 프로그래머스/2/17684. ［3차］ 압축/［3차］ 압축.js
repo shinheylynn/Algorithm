@@ -8,7 +8,6 @@ function solution(msg) {
     while (sliceIndex < msg.length) {
         let j = msg.length
 
-        // w가 사전에 없다면, 마지막 글자 하나씩 제거하며 찾는다
         while (!dic.get(msg.slice(sliceIndex, j))) {
             j--
         }
