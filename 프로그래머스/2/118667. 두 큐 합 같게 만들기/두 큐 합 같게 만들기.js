@@ -6,7 +6,7 @@ function solution(queue1, queue2) {
     let index1 = 0
     let index2 = queue1.length
     let answer = 0
-    while (answer <= queue1.length * 3) {
+    while (answer <= queue1.length * 2 + 2) {
         if (sum1 === half) return answer
         
         if (sum1 > half) {
