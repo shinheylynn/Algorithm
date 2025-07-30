@@ -1,14 +1,14 @@
 function solution(n, q, ans) {
     const combinations = getCombinations(n)
-    const answer = []
+    let answer = 0
     
     for (const combination of combinations) {
         if (isValid(combination, q, ans)) {
-            answer.push(combination)
+            answer++
         }
     }
     
-    return answer.length
+    return answer
 }
 
 // n의 최대값은 30, 배열의 길이는 5 
