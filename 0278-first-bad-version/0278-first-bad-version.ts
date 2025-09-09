@@ -7,8 +7,6 @@
 
 var solution = function(isBadVersion: any) {
     return function(n: number): number {
-        if (n === 1) return 1
-
         let min = 0
         let max = n
 
