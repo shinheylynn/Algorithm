@@ -33,6 +33,7 @@
 | [0035-search-insert-position](https://github.com/shinheylynn/Algorithm/tree/master/0035-search-insert-position) |
 | [0088-merge-sorted-array](https://github.com/shinheylynn/Algorithm/tree/master/0088-merge-sorted-array) |
 | [0169-majority-element](https://github.com/shinheylynn/Algorithm/tree/master/0169-majority-element) |
+| [0229-majority-element-ii](https://github.com/shinheylynn/Algorithm/tree/master/0229-majority-element-ii) |
 ## Binary Search
 |  |
 | ------- |
@@ -52,10 +53,12 @@
 | ------- |
 | [0088-merge-sorted-array](https://github.com/shinheylynn/Algorithm/tree/master/0088-merge-sorted-array) |
 | [0169-majority-element](https://github.com/shinheylynn/Algorithm/tree/master/0169-majority-element) |
+| [0229-majority-element-ii](https://github.com/shinheylynn/Algorithm/tree/master/0229-majority-element-ii) |
 ## Hash Table
 |  |
 | ------- |
 | [0169-majority-element](https://github.com/shinheylynn/Algorithm/tree/master/0169-majority-element) |
+| [0229-majority-element-ii](https://github.com/shinheylynn/Algorithm/tree/master/0229-majority-element-ii) |
 ## Divide and Conquer
 |  |
 | ------- |
@@ -64,4 +67,5 @@
 |  |
 | ------- |
 | [0169-majority-element](https://github.com/shinheylynn/Algorithm/tree/master/0169-majority-element) |
+| [0229-majority-element-ii](https://github.com/shinheylynn/Algorithm/tree/master/0229-majority-element-ii) |
 <!---LeetCode Topics End-->
