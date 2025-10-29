@@ -1,4 +1,4 @@
-function majorityElement(nums: number[]): number {
+function majorityElement(nums: number[]): number | undefined {
     const count = {}
     const half = Math.floor(nums.length / 2)
 
